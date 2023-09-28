@@ -54,10 +54,11 @@ const Edit = () => {
 
   const profileQuery = useQuery({
     queryKey: ['profile'],
-    queryFn: () => getProfile(address as string),
+    queryFn: () => getProfile,
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
+    /* @ts-ignore */
     defaultValues: profileQuery.data,
     resolver: zodResolver(formSchema),
   });
